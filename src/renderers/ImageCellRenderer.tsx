@@ -16,7 +16,7 @@ const CellContent = styled.img`
 `
 
 const ImageCellRenderer: FC<CustomCellRendererProps> = ({ value }) => {
-  if (!value) return
+  if (!value) return null
 
   return (
     <CellContainer>

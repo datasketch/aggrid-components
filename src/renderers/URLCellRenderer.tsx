@@ -9,7 +9,7 @@ const CellContent = styled.a`
 `
 
 const URLCellRenderer: FC<CustomCellRendererProps> = ({ value }) => {
-  if (!value) return
+  if (!value) return null
 
   if (!isURL(value)) {
     return <span>{value}</span>

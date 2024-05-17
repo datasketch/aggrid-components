@@ -5,7 +5,7 @@ import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 import { useMemo } from "react"
-import { EmailCellRenderer, ImageCellRenderer, URLCellRenderer } from "../main"
+import { CategoryCellRenderer, EmailCellRenderer, ImageCellRenderer, URLCellRenderer } from "../main"
 import data from './data/nyt-10-best-books-2022.json'
 
 import '@ag-grid-community/styles/ag-grid.min.css'
@@ -23,8 +23,11 @@ function App() {
       },
       {
         field: "author",
-        headerName: 'Author'
-        // cellRenderer: CompanyRenderer,
+        headerName: 'Author',
+        cellRenderer: CategoryCellRenderer,
+        cellRendererParams: {
+          values: [...new Set(data.map(record => record.author))].sort(),
+        }
       },
       {
         headerName: "Cover",
@@ -35,7 +38,6 @@ function App() {
       {
         field: "summary",
         headerName: "Summary"
-        // cellRenderer: PriceRenderer,
       },
       {
         field: 'reviews',
@@ -44,7 +46,12 @@ function App() {
       },
       {
         field: 'genres',
-        headerName: 'Genres'
+        headerName: 'Genres',
+        cellRenderer: CategoryCellRenderer,
+        cellRendererParams: {
+          values: [...new Set(data.map(record => record.genres.split(",")).flat())].sort(),
+          multiple: true
+        }
       },
       {
         field: 'email',

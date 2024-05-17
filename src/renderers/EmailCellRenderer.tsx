@@ -9,7 +9,7 @@ const CellContent = styled.a`
 `
 
 const EmailCellRenderer: FC<CustomCellRendererProps> = ({ value }) => {
-  if (!value) return
+  if (!value) return null
 
   if (!isEmail(value)) {
     return <span>{value}</span>
