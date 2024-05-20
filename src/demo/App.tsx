@@ -50,7 +50,8 @@ function App() {
         cellRenderer: CategoryCellRenderer,
         cellRendererParams: {
           values: [...new Set(data.map(record => record.genres.split(",")).flat())].sort(),
-          multiple: true
+          multiple: true,
+          separator: ','
         }
       },
       {

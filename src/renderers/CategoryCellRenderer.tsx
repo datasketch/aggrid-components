@@ -49,7 +49,7 @@ const Badge = styled.span`
 const CategoryCellRenderer: FC<CustomCellRendererProps> = ({ value, colDef }) => {
   const params = colDef?.cellRendererParams;
 
-  const { values, multiple } = params
+  const { values, multiple, separator = ',' } = params
 
   const badgeStyles = (badgeColor: BadgeColor) => ({
     backgroundColor: badgeColor.background ,
@@ -57,7 +57,7 @@ const CategoryCellRenderer: FC<CustomCellRendererProps> = ({ value, colDef }) =>
   })
 
   if (multiple) {
-    const valueList: Array<string> = value.split(",")
+    const valueList: Array<string> = value.split(separator)
     const valueIndexes: Record<string, number> = valueList.reduce((result, value) => ({...result, [value]: values.indexOf(value)}), {})
 
     return (
