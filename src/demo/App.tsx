@@ -5,7 +5,7 @@ import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 import { useMemo } from "react"
-import { CategoryCellRenderer, EmailCellRenderer, ImageCellRenderer, URLCellRenderer } from "../main"
+import { CategoryCellEditor, CategoryCellRenderer, EmailCellRenderer, ImageCellRenderer, URLCellRenderer, suppressKeyboardEvent } from "../main"
 import data from './data/nyt-10-best-books-2022.json'
 
 import '@ag-grid-community/styles/ag-grid.min.css'
@@ -27,7 +27,11 @@ function App() {
         cellRenderer: CategoryCellRenderer,
         cellRendererParams: {
           values: [...new Set(data.map(record => record.author))].sort(),
-        }
+          // multiple: true
+        },
+        cellEditor: CategoryCellEditor,
+        cellEditorPopup: true,
+        suppressKeyboardEvent
       },
       {
         headerName: "Cover",
@@ -37,7 +41,9 @@ function App() {
       },
       {
         field: "summary",
-        headerName: "Summary"
+        headerName: "Summary",
+        cellEditor: 'agLargeTextCellEditor',
+        cellEditorPopup: true,
       },
       {
         field: 'reviews',
@@ -52,7 +58,10 @@ function App() {
           values: [...new Set(data.map(record => record.genres.split(",")).flat())].sort(),
           multiple: true,
           separator: ','
-        }
+        },
+        cellEditor: CategoryCellEditor,
+        cellEditorPopup: true,
+        suppressKeyboardEvent
       },
       {
         field: 'email',
@@ -64,9 +73,14 @@ function App() {
 
   return (
     <div className="ag-theme-quartz" style={{ height: '500px' }}>
-      <AgGridReact rowData={data} columnDefs={columnDefs} defaultColDef={{
-        editable: true
-      }} />
+      <AgGridReact
+        rowData={data}
+        columnDefs={columnDefs}
+        defaultColDef={{
+          editable: true
+        }}
+        reactiveCustomComponents
+      />
     </div>
   )
 }

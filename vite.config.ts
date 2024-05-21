@@ -19,7 +19,8 @@ export default defineConfig({
       external: ['react', 'react-dom', '@ag-grid-community/core', '@ag-grid-community/react', '@ag-grid-community/styles'],
       output: {
         globals: {
-          react: 'React'
+          react: 'React',
+          'react-dom': 'ReactDOM'
         }
       }
     }

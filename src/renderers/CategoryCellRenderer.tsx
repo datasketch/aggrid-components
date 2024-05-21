@@ -47,6 +47,8 @@ const Badge = styled.span`
 `
 
 const CategoryCellRenderer: FC<CustomCellRendererProps> = ({ value, colDef }) => {
+  if (!value) return <span></span>
+
   const params = colDef?.cellRendererParams;
 
   const { values, multiple, separator = ',' } = params
