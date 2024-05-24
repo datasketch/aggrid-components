@@ -27,7 +27,12 @@ const AVAILABLE_COLORS: Array<BadgeColor> = [
   { background: "#e57373", text: "#2c3e50" },
   { background: "#d2e4fc", text: "#2c3e50" },
   { background: "#d0e8eb", text: "#2c3e50" },
-  { background: "#ffe4e1", text: "#2c3e50" }
+  { background: "#ffe4e1", text: "#2c3e50" },
+  { background: "#2B2D42", text: "#FFFFFF" },
+  { background: "#EDF2F4", text: "#2B2D42" },
+  { background: "#EF233C", text: "#FFFFFF" },
+  { background: "#8D99AE", text: "#FFFFFF" },
+  { background: "#FFD166", text: "#333333" }
 ]
 
 const Badges = styled.div`
