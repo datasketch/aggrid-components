@@ -59,8 +59,8 @@ const CategoryCellRenderer: FC<CustomCellRendererProps> = ({ value, colDef }) =>
   const { values, multiple, separator = ',' } = params
 
   const badgeStyles = (badgeColor: BadgeColor) => ({
-    backgroundColor: badgeColor.background ,
-    color: badgeColor.text,
+    backgroundColor: badgeColor?.background ,
+    color: badgeColor?.text,
   })
 
   if (multiple) {
