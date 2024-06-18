@@ -15,9 +15,11 @@ const CategoryCellEditor: FC<CustomCellEditorProps> = ({ api, value, stopEditing
   const { values, multiple, separator = ',' } = colDef.cellRendererParams
   const options: Array<Option> = values.map((value: string) => createOption(value))
   const isMulti = !!multiple
-  const valueList = value.split(separator)
+  const valueList = value?.split(separator)
 
-  const initialState: MultiValue<Option> | SingleValue<Option> = !isMulti ? (options.find(option => option.value === value) || null) : options.filter(option => valueList.includes(option.value))
+  const initialState: MultiValue<Option> | SingleValue<Option> = !isMulti
+    ? (options.find(option => option.value === value) || null)
+    : options.filter(option => valueList?.includes(option.value))
 
 
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +44,7 @@ const CategoryCellEditor: FC<CustomCellEditorProps> = ({ api, value, stopEditing
 
     const currentColumnDefIndex = columnDefs.findIndex(({ field }: ColDef) => field === colDef.field)
 
-    ;(columnDefs[currentColumnDefIndex] as ColDef).cellRendererParams.values.push(newValue)
+      ; (columnDefs[currentColumnDefIndex] as ColDef).cellRendererParams.values.push(newValue)
 
     api.setGridOption('columnDefs', columnDefs)
 
