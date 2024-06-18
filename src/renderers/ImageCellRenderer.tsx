@@ -20,7 +20,7 @@ const ImageCellRenderer: FC<CustomCellRendererProps> = ({ value }) => {
 
   return (
     <CellContainer>
-      <CellContent src={value} alt={`${value} image`} />
+      <CellContent src={value} alt={`${value}`} />
     </CellContainer>
   )
 }
