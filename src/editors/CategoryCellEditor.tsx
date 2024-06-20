@@ -100,6 +100,7 @@ const CategoryCellEditor: FC<CustomCellEditorProps> = ({
       isClearable
       autoFocus
       openMenuOnFocus
+      menuPosition="fixed"
     />
   )
 }
