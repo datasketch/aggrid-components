@@ -10,6 +10,8 @@ import data from './data/nyt-10-best-books-2022.json'
 
 import '@ag-grid-community/styles/ag-grid.min.css'
 import '@ag-grid-community/styles/ag-theme-quartz.css'
+import ColorCellRenderer from "../renderers/ColorCellRenderer";
+import ColorCellEditor from "../editors/ColorCellEditor";
 
 ModuleRegistry.registerModules([ ClientSideRowModelModule ])
 
@@ -67,6 +69,13 @@ function App() {
         field: 'email',
         headerName: 'Support Email',
         cellRenderer: EmailCellRenderer
+      },
+      {
+        field:'color',
+        headerName:'Colors',
+        cellRenderer:ColorCellRenderer,
+        cellEditor: ColorCellEditor,
+        cellEditorPopup: true,
       }
     ] as ColDef[]
   }, [])
